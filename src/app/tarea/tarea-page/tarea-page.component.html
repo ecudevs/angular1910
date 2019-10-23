@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <h1>
+        To Do
+        <button
+          class="btn btn-outline-danger"
+          (click)="mostrarFormulario = true"
+        >
+          Nueva
+        </button>
+      </h1>
+      <div class="card p-2">
+        <div class="body">
+          <div class="col-12 mb-2" *ngIf="mostrarFormulario">
+            <app-tarea-form (guardarToDo)="nuevaTarea($event)"></app-tarea-form>
+          </div>
+          <div *ngFor="let tarea of tareas" class="col-12 mb-2">
+            <app-tarea-card
+              [tarea]="tarea"
+              *ngIf="tarea.estado == 'TO_DO'"
+              (clickCambiarEstado)="cambiarAInProgress($event)"
+            ></app-tarea-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h1>In progress</h1>
+      <div class="card p-2">
+        <div class="body">
+          <div *ngFor="let tarea of tareas" class="col-12">
+            <app-tarea-card
+              [tarea]="tarea"
+              *ngIf="tarea.estado == 'IN_PROGRESS'"
+              (clickCambiarEstado)="cambiarAFinished($event)"
+            ></app-tarea-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h1>Finished</h1>
+      <div class="card p-2">
+        <div class="body">
+          <div *ngFor="let tarea of tareas" class="col-12">
+            <app-tarea-card
+              [tarea]="tarea"
+              *ngIf="
+                tarea.estado == 'FINISHED' || tarea.estado == 'IN_PROGRESS'
+              "
+            ></app-tarea-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
