@@ -24,14 +24,20 @@ export class TareaPageComponent implements OnInit {
     });
   }
 
-  cambiarAInProgress(tarea) {
+  cambiarEstado(tarea, estado) {
     // let indice = this.tareas.findIndex(tareaIteracion => {
     //   return tarea.descripcion == tareaIteracion.descripcion;
     // });
-    let indice = this.tareas.findIndex(
-      tareaIteracion => tarea.descripcion == tareaIteracion.descripcion
+    this.tareaService.updateTarea({ ...tarea, estado }).subscribe(
+      (response: any) => {
+        console.log(response.mensaje);
+        this.cargarTareas();
+      },
+      error => {
+        console.log("Ocurrio un error");
+        console.log(error);
+      }
     );
-    this.tareas[indice].estado = "IN_PROGRESS";
   }
 
   cambiarAFinished(tarea) {

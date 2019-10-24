@@ -14,4 +14,8 @@ export class TareaService {
   insertTarea(tarea) {
     return this.http.post("http://localhost:9000/tarea", tarea);
   }
+
+  updateTarea(tarea) {
+    return this.http.put("http://localhost:9000/tarea", tarea);
+  }
 }

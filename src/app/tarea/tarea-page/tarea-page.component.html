@@ -19,7 +19,7 @@
             <app-tarea-card
               [tarea]="tarea"
               *ngIf="tarea.estado == 'TO_DO'"
-              (clickCambiarEstado)="cambiarAInProgress($event)"
+              (clickCambiarEstado)="cambiarEstado($event, 'IN_PROGRESS')"
             ></app-tarea-card>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <app-tarea-card
               [tarea]="tarea"
               *ngIf="tarea.estado == 'IN_PROGRESS'"
-              (clickCambiarEstado)="cambiarAFinished($event)"
+              (clickCambiarEstado)="cambiarEstado($event, 'FINISHED')"
             ></app-tarea-card>
           </div>
         </div>

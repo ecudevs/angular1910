@@ -23,8 +23,12 @@ app.post("/tarea", (req, res) => {
   res.send({ mensaje: "Tarea insertada!" });
 });
 
-app.put("/hola", (req, res) => {
-  res.send("hola put 1 " + JSON.stringify(req.body));
+app.put("/tarea", (req, res) => {
+  let indice = tareas.findIndex(
+    tareaIteracion => req.body._id == tareaIteracion._id
+  );
+  tareas[indice] = req.body;
+  res.send({ mensaje: "Tarea actualizada!" });
 });
 
 app.delete("/hola", (req, res) => {
