@@ -14,6 +14,19 @@
         ></textarea>
       </div>
       <div class="form-group">
+        <label for="prioridad">Prioridad</label>
+        <input
+          appNumero
+          type="texto"
+          id="prioridad"
+          name="asigprioridadnado"
+          [(ngModel)]="tarea.prioridad"
+          #prioridad="ngModel"
+          class="form-control"
+          placeholder="Ingresa la prioridad de la tarea"
+        />
+      </div>
+      <div class="form-group">
         <label for="asignado">Asignado</label>
         <input
           type="texto"

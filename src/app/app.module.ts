@@ -8,6 +8,9 @@ import { TareaCardComponent } from "./tarea/tarea-card/tarea-card.component";
 import { TareaPageComponent } from "./tarea/tarea-page/tarea-page.component";
 import { TareaDetallePageComponent } from "./tarea/tarea-detalle-page/tarea-detalle-page.component";
 import { TareaFormComponent } from "./tarea/tarea-form/tarea-form.component";
+import { EstadoPipe } from "./pipes/estado.pipe";
+import { NumeroDirective } from "./numero.directive";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,9 +18,11 @@ import { TareaFormComponent } from "./tarea/tarea-form/tarea-form.component";
     TareaCardComponent,
     TareaPageComponent,
     TareaDetallePageComponent,
-    TareaFormComponent
+    TareaFormComponent,
+    EstadoPipe,
+    NumeroDirective
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

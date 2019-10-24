@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./tarea-form.component.sass"]
 })
 export class TareaFormComponent implements OnInit {
-  tarea = { descripcion: "asd", asignado: {}, estado: "TO_DO" };
+  tarea = { descripcion: "", asignado: {}, estado: "TO_DO" };
 
   @Output() guardarToDo = new EventEmitter<any>();
 
@@ -15,6 +15,6 @@ export class TareaFormComponent implements OnInit {
   ngOnInit() {}
 
   sumitForm() {
-    this.guardarToDo.next(this.tarea);
+    this.guardarToDo.next({ ...this.tarea, feCreacion: new Date() });
   }
 }

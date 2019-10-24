@@ -2,7 +2,9 @@
   <div class="card-body">
     <h5 class="card-title">{{ tarea.descripcion }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{ tarea.asignado.nombre }}</h6>
-    <p>Estado {{ tarea.estado }}</p>
+    <!-- <p>Costo {{ 20 | currency: "EUR" }}</p> -->
+    <p>Creado el {{ tarea.feCreacion | date: "dd/MM/yyyy HH:mm" }}</p>
+    <p>Estado {{ tarea.estado | estado: "asd" }}</p>
     <a href="#" class="card-link" (click)="cambiarEstado()">In progress</a>
   </div>
 </div>

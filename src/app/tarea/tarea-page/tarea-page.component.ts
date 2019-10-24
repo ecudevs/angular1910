@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TareaService } from "src/app/services/tarea.service";
 
 @Component({
   selector: "app-tarea-page",
@@ -8,40 +9,20 @@ import { Component, OnInit } from "@angular/core";
 export class TareaPageComponent implements OnInit {
   mostrarFormulario = false;
 
-  tareas: any = [
-    {
-      _id: 1,
-      descripcion: "Tarea 1",
-      feCreacion: new Date(),
-      asignado: { nombre: "Thian Lopez", correo: "thianlopezz@gmail.com" },
-      estado: "TO_DO"
-    },
-    {
-      _id: 2,
-      descripcion: "Tarea 2",
-      feCreacion: new Date(),
-      asignado: { nombre: "Thian Lopez", correo: "thianlopezz@gmail.com" },
-      estado: "TO_DO"
-    },
-    {
-      _id: 3,
-      descripcion: "Terminar lo que esta por hacer 2",
-      feCreacion: new Date(),
-      asignado: { nombre: "Thian Lopez", correo: "thianlopezz@gmail.com" },
-      estado: "IN_PROGRESS"
-    },
-    {
-      idTarea: 4,
-      descripcion: "Terminar lo que esta por hacer 3",
-      feCreacion: new Date(),
-      asignado: { nombre: "Thian Lopez", correo: "thianlopezz@gmail.com" },
-      estado: "FINISHED"
-    }
-  ];
+  tareas: any = [];
 
-  constructor() {}
+  constructor(private tareaService: TareaService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cargarTareas();
+  }
+
+  cargarTareas() {
+    this.tareaService.getTareas().subscribe((response: any) => {
+      console.log(1);
+      this.tareas = response.tareas;
+    });
+  }
 
   cambiarAInProgress(tarea) {
     // let indice = this.tareas.findIndex(tareaIteracion => {
@@ -64,6 +45,16 @@ export class TareaPageComponent implements OnInit {
   }
 
   nuevaTarea(tarea) {
-    this.tareas.push({ ...tarea, _id: this.tareas.length + 1 });
+    this.tareaService.insertTarea(tarea).subscribe(
+      (response: any) => {
+        console.log(response.mensaje);
+        this.mostrarFormulario = false;
+        this.cargarTareas();
+      },
+      error => {
+        console.log("Ocurrio un error");
+        console.log(error);
+      }
+    );
   }
 }
