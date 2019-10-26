@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const http = require("http");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const TareaController = require("./Controllers/TareaController");
 
 const app = express();
 
@@ -13,27 +15,29 @@ app.use(cors());
 const tareas = require("./constants");
 
 app.get("/tareas", (req, res) => {
-  res.send({ tareas });
+  TareaController.getTareas(res);
+});
+
+app.get("/tarea/:idTarea", (req, res) => {
+  TareaController.getTareaById(req.params.idTarea, res);
 });
 
 app.post("/tarea", (req, res) => {
-  console.log(req.body);
-  tareas.push({ ...req.body, _id: tareas.length + 1 });
-  console.log(1);
-  res.send({ mensaje: "Tarea insertada!" });
+  TareaController.insert(req.body, res);
 });
 
 app.put("/tarea", (req, res) => {
-  let indice = tareas.findIndex(
-    tareaIteracion => req.body._id == tareaIteracion._id
-  );
-  tareas[indice] = req.body;
-  res.send({ mensaje: "Tarea actualizada!" });
+  TareaController.update(req.body, res);
 });
 
 app.delete("/hola", (req, res) => {
   console.log(req.query);
   res.send("hola " + req.query.nombre + " " + req.query.apellido);
+});
+
+mongoose.connect("mongodb://localhost:27017/angular1910", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 const port = process.env.PORT || "9000";
