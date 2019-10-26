@@ -51,6 +51,16 @@ function TareaContoller() {
       res.status(500).send({ error });
     }
   };
+
+  this.remove = async function(_id, res) {
+    try {
+      await Tarea.remove({ _id: ObjectId(_id) });
+      res.send({ mensaje: "Eliminado" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error });
+    }
+  };
 }
 
 module.exports = new TareaContoller();

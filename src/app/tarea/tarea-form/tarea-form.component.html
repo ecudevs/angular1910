@@ -3,6 +3,18 @@
     {{ tarea.descripcion }}
     <form #f="ngForm" (ngSubmit)="sumitForm()" novalidate>
       <div class="form-group">
+        <label for="titulo">Titulo</label>
+        <input
+          type="texto"
+          id="titulo"
+          name="titulo"
+          [(ngModel)]="tarea.titulo"
+          #titulo="ngModel"
+          class="form-control"
+          placeholder="Ingresa el titulo de la tarea"
+        />
+      </div>
+      <div class="form-group">
         <label for="descripcion">Descripcion</label>
         <textarea
           id="descripcion"
@@ -15,28 +27,47 @@
       </div>
       <div class="form-group">
         <label for="prioridad">Prioridad</label>
-        <input
-          appNumero
-          type="texto"
+        <select
+          class="form-control"
           id="prioridad"
-          name="asigprioridadnado"
+          name="prioridad"
           [(ngModel)]="tarea.prioridad"
           #prioridad="ngModel"
-          class="form-control"
-          placeholder="Ingresa la prioridad de la tarea"
-        />
+        >
+          <option *ngFor="let item of prioridadesList" [value]="item.value">{{
+            item.text
+          }}</option>
+        </select>
       </div>
-      <div class="form-group">
-        <label for="asignado">Asignado</label>
-        <input
-          type="texto"
-          id="asignado"
-          name="asignado"
-          [(ngModel)]="tarea.asignado.nombre"
-          #asignado="ngModel"
-          class="form-control"
-          placeholder="Ingresa el asignado a esta tarea"
-        />
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              type="texto"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="tarea.asignado.nombre"
+              #nombre="ngModel"
+              class="form-control"
+              placeholder="Ingresa el asignado a esta tarea"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              type="texto"
+              id="apellido"
+              name="apellido"
+              [(ngModel)]="tarea.asignado.apellido"
+              #apellido="ngModel"
+              class="form-control"
+              placeholder="Ingresa el asignado a esta tarea"
+            />
+          </div>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

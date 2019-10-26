@@ -46,9 +46,7 @@
           <div *ngFor="let tarea of tareas" class="col-12">
             <app-tarea-card
               [tarea]="tarea"
-              *ngIf="
-                tarea.estado == 'FINISHED' || tarea.estado == 'IN_PROGRESS'
-              "
+              *ngIf="tarea.estado == 'FINISHED'"
             ></app-tarea-card>
           </div>
         </div>

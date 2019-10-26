@@ -30,6 +30,10 @@ app.put("/tarea", (req, res) => {
   TareaController.update(req.body, res);
 });
 
+app.delete("/tarea/:idTarea", (req, res) => {
+  TareaController.remove(req.params.idTarea, res);
+});
+
 app.delete("/hola", (req, res) => {
   console.log(req.query);
   res.send("hola " + req.query.nombre + " " + req.query.apellido);

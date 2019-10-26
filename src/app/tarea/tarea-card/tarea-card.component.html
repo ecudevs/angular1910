@@ -1,7 +1,14 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ tarea.descripcion }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ tarea.asignado.nombre }}</h6>
+    <h5 class="card-title">{{ tarea.titulo || "Sin titulo" }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {{
+        tarea.asignado
+          ? tarea.asignado.nombre + " " + tarea.asignado.apellido
+          : "No asignado"
+      }}
+    </h6>
+    <p>{{ tarea.descripcion }}</p>
     <!-- <p>Costo {{ 20 | currency: "EUR" }}</p> -->
     <p>Creado el {{ tarea.feCreacion | date: "dd/MM/yyyy HH:mm" }}</p>
     <p>Estado {{ tarea.estado | estado: "asd" }}</p>
