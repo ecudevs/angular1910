@@ -11,6 +11,7 @@ import { TareaFormComponent } from "./tarea/tarea-form/tarea-form.component";
 import { EstadoPipe } from "./pipes/estado.pipe";
 import { NumeroDirective } from "./numero.directive";
 import { HttpClientModule } from "@angular/common/http";
+import { LoginPageComponent } from './login/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from "@angular/common/http";
     TareaDetallePageComponent,
     TareaFormComponent,
     EstadoPipe,
-    NumeroDirective
+    NumeroDirective,
+    LoginPageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

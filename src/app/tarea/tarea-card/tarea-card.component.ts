@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./tarea-card.component.sass"]
 })
 export class TareaCardComponent implements OnInit {
-  @Input() tarea = {};
+  @Input() tarea: any = {};
   @Output() clickCambiarEstado = new EventEmitter<any>();
 
   constructor() {}

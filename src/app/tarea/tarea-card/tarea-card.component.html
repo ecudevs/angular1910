@@ -1,6 +1,8 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ tarea.titulo || "Sin titulo" }}</h5>
+    <a [routerLink]="['detalle', tarea._id]">
+      <h5 class="card-title">{{ tarea.titulo || "Sin titulo" }}</h5>
+    </a>
     <h6 class="card-subtitle mb-2 text-muted">
       {{
         tarea.asignado

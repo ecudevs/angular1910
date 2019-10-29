@@ -1,0 +1,11 @@
+$variante: rgb(37, 201, 50);
+
+form.login {
+  color: aqua;
+  button.btn-login {
+    color: $variante;
+  }
+  p {
+    color: $variante !important;
+  }
+}

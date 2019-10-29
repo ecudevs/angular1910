@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./tarea-form.component.sass"]
 })
 export class TareaFormComponent implements OnInit {
-  tarea = { descripcion: "", asignado: {}, estado: "TO_DO" };
+  tarea: any = { descripcion: "", asignado: {}, estado: "TO_DO" };
 
   prioridadesList = new Array(10).fill(1);
 
