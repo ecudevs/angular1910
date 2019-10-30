@@ -50,10 +50,13 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-mongoose.connect("mongodb://localhost:27017/angular1910", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect(
+  "mongodb://heroku_lkdpvq3k:8kur5bv4sjgvdeoe3usgpd3aqg@ds133556.mlab.com:33556/heroku_lkdpvq3k",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
 
 const port = process.env.PORT || "9000";
 app.set("port", port);
